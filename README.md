@@ -6,8 +6,8 @@ AICommit is a powerful CLI tool that uses either Google's Gemini or OpenAI's GPT
 
 - 🤖 Supports both Google Gemini and OpenAI GPT models
 - 🧠 Multiple model options for each provider
-  - Gemini: gemini-2.0-flash, gemini-2.0-flash-vision
-  - OpenAI: gpt-4, gpt-4-turbo-preview, gpt-4.1-nano, gpt-4.1-nano-16k
+  - Gemini: gemini-2.0-flash, gemini-2.0-flash-vision or any other model supported by Google Gemini
+  - OpenAI: gpt-4, gpt-4-turbo-preview, gpt-4.1-nano, gpt-4.1-nano-16k or any other model supported by OpenAI
 - 📝 Generates conventional commit messages with appropriate types
 - 🎯 Supports commit scopes and breaking changes
 - 🔄 Amend existing commits
@@ -37,7 +37,7 @@ bun install -g @vakhariaheet/aicommit
 On first run, AICommit will guide you through the setup process:
 
 1. Choose your preferred AI provider (Gemini or OpenAI)
-2. Select your preferred model
+2. Enter your preferred model name (defaults provided)
 3. Enter your API key
 4. Configure default settings
 
@@ -89,7 +89,7 @@ aicommit --verbose
 aicommit --push
 
 # Use a specific model for this commit
-aicommit --model gpt-4
+aicommit --model gemini-2.0-flash
 ```
 
 ### Command Options
@@ -105,8 +105,8 @@ aicommit --model gpt-4
 
 #### Commit Content
 ```bash
--f, --files <files>    # Comma-separated list of files to commit
--t, --type <type>     # Commit type (feat, fix, etc.)
+-f, --files <files>    # Space-separated list of files to commit
+-t, --use-type        # Include commit type (feat, fix, etc.)
 -s, --scope <scope>   # Commit scope (e.g., auth, ui)
 -b, --breaking        # Mark as breaking change
 -r, --ref <reference> # Add issue/PR reference
@@ -114,19 +114,17 @@ aicommit --model gpt-4
 
 #### Message Style
 ```bash
--e, --emoji           # Include emoji (default: true)
---no-emoji           # Disable emoji
--c, --custom-prompt  # Custom prompt for AI
-```
-
-#### Special Actions
-```bash
---revert             # Revert last commit
+-e, --emoji           # Include emoji
+--custom-prompt      # Custom prompt for AI
 ```
 
 ### Configuration
+If you want to change the default values for any option, either you can use the following command or you can directly update the configuration file.
+
+#### Configuration Commands
 
 Set default values for any option:
+
 ```bash
 # Set defaults
 aicommit config --set push true
@@ -164,18 +162,23 @@ Supported conventional commit types:
 ## 🔧 Configuration File
 
 Configuration is stored in `~/.aicommit` as a JSON file with the following structure:
+
 ```json
 {
+  "AI_PROVIDER": "gemini",
   "GEMINI_API_KEY": "your-api-key",
+  "OPENAI_API_KEY": "your-openai-key",
   "IS_FREE_ACCOUNT": true,
+  "MODEL": "gemini-2.0-flash",
   "defaults": {
     "push": false,
     "multiline": false,
     "verbose": false,
-    "type": "feat",
     "emoji": true,
     "scope": null,
-    "breaking": false
+    "breaking": false,
+    "customPrompt": null,
+    "useType": true
   }
 }
 ```
@@ -183,6 +186,53 @@ Configuration is stored in `~/.aicommit` as a JSON file with the following struc
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch:
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Make your changes and test them:
+   ```bash
+   npm run build
+   ```
+5. Commit your changes using aicommit:
+   ```bash
+   npm run dev
+   ```
+6. Push to your branch:
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+7. Open a Pull Request
+
+### Development Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vakhariaheet/aicommit.git
+   cd aicommit
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a link for local development:
+   ```bash
+   npm link
+   ```
+
+4. Build and watch for changes:
+   ```bash
+   npm run build -- --watch
+   ```
+
 
 ## 📄 License
 

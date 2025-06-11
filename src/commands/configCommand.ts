@@ -241,11 +241,11 @@ export class ConfigCommand {
     if (config.AI_PROVIDER === 'gemini') {
       console.log('Gemini API Key:', config.GEMINI_API_KEY ? '********' : 'Not set');
       console.log('Model:', config.MODEL || 'gemini-2.0-flash (default)');
-      console.log('\nAvailable Gemini Models:', GEMINI_MODELS.join(', '));
+     
     } else {
       console.log('OpenAI API Key:', config.OPENAI_API_KEY ? '********' : 'Not set');
       console.log('Model:', config.MODEL || 'gpt-4.1-nano (default)');
-      console.log('\nAvailable OpenAI Models:', OPENAI_MODELS.join(', '));
+     
     }
     console.log('\nAccount Type:', config.IS_FREE_ACCOUNT ? 'Free' : 'Paid');
     console.log('\nDefault Values:');

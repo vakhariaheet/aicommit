@@ -18,16 +18,7 @@ async function main() {
 
     program
       .name('aicommit')
-      .description(`
-      🤖 AI-powered git commit message generator
-
-      This tool uses AI to generate meaningful commit messages based on your changes.
-      It supports conventional commits, emojis, and various customization options.
-      `)
-      .version('1.0.0');
-
-    program
-      .command('commit')
+      .version('0.0.2')
       .description('Generate and create a commit with an AI-generated message')
       .option('-p, --push', 'Push changes after commit', defaults?.push)
       .option('-m, --multiline', 'Generate a detailed multiline commit message', defaults?.multiline)
@@ -46,14 +37,14 @@ async function main() {
       .option('--model <model>', 'Use a specific AI model for this commit')
       .addHelpText('after', `
     Usage Examples:
-      $ aicommit commit                           Generate commit message for staged changes
-      $ aicommit commit -p                        Commit and push changes
-      $ aicommit commit --use-type -s auth       Create commit with AI-selected type and auth scope
-      $ aicommit commit -m -b                     Create multiline breaking change commit
-      $ aicommit commit -f "file1.ts,file2.ts"   Commit specific files
-      $ aicommit commit -a                        Amend last commit
-      $ aicommit commit --revert                  Revert last commit
-      $ aicommit commit -r "#123"                 Reference issue/PR in commit
+      $ aicommit                           Generate commit message for staged changes
+      $ aicommit -p                        Commit and push changes
+      $ aicommit --use-type -s auth       Create commit with AI-selected type and auth scope
+      $ aicommit -m -b                     Create multiline breaking change commit
+      $ aicommit -f "file1.ts,file2.ts"   Commit specific files
+      $ aicommit -a                        Amend last commit
+      $ aicommit --revert                  Revert last commit
+      $ aicommit -r "#123"                 Reference issue/PR in commit
 
     Available Commit Types (when using --use-type):
       ${COMMIT_TYPES.map(type => `${type}`).join(', ')}
@@ -100,7 +91,7 @@ async function main() {
 
     program
       .command('config')
-      .description('Configure aicommit settings')
+      .description('Configure aicommit settings (use --list to see current configuration) or you can directly update the configuration file')
       .option('-k, --key <key>', 'Set API key')
       .option('-p, --provider <provider>', 'Set AI provider (gemini or openai)')
       .option('-m, --model <model>', 'Set AI model')

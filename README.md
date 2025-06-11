@@ -23,13 +23,13 @@ AICommit is a powerful CLI tool that uses either Google's Gemini or OpenAI's GPT
 
 ```bash
 # Using npm
-npm install -g @vakhariaheet/aicommit
+npm install -g @vakharia_heet/aicommit
 
 # Using yarn
-yarn global add @vakhariaheet/aicommit
+yarn global add @vakharia_heet/aicommit
 
 # Using bun
-bun install -g @vakhariaheet/aicommit
+bun install -g @vakharia_heet/aicommit
 ```
 
 ## 🔑 Setup

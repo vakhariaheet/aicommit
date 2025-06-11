@@ -1,6 +1,14 @@
 {
 	"name": "aicommit",
-	"version": "1.0.0",
+	"version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vakhariaheet/aicommit.git"
+    },
+	"bugs": {
+		"url": "https://github.com/vakhariaheet/aicommit/issues"
+	},
+	"homepage": "https://github.com/vakhariaheet/aicommit#readme",
 	"description": "AI-powered git commit message generator",
 	"main": "dist/index.js",
 	"bin": {
@@ -9,6 +17,8 @@
 	"scripts": {
 		"build": "tsc",
 		"start": "node dist/index.js",
+        "prestart": "npm run build",
+        
 		"dev": "ts-node src/index.ts"
 	},
 	"keywords": [

@@ -286,7 +286,7 @@ export class AIService {
       throw new Error(`No API key found for ${config.AI_PROVIDER}. Please set it in the config or as an environment variable.`);
     }
 
-    const model = config.MODEL || (config.AI_PROVIDER === 'gemini' ? 'gemini-2.0-flash' : 'gpt-3.5-turbo');
+    const model = config.MODEL || (config.AI_PROVIDER === 'gemini' ? 'gemini-2.0-flash' : 'gpt-4.1-nano');
     await this.service.initialize({
       apiKey,
       isFreeAccount: config.IS_FREE_ACCOUNT,

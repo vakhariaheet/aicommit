@@ -65,7 +65,7 @@ export class ConfigCommand {
       }
     ]);
 
-    const defaultModel = provider === 'gemini' ? 'gemini-2.0-flash' : 'gpt-3.5-turbo';
+    const defaultModel = provider === 'gemini' ? 'gemini-2.0-flash' : 'gpt-4.1-nano';
 
     const { model } = await inquirer.prompt([
       {
@@ -244,7 +244,7 @@ export class ConfigCommand {
       console.log('\nAvailable Gemini Models:', GEMINI_MODELS.join(', '));
     } else {
       console.log('OpenAI API Key:', config.OPENAI_API_KEY ? '********' : 'Not set');
-      console.log('Model:', config.MODEL || 'gpt-3.5-turbo (default)');
+      console.log('Model:', config.MODEL || 'gpt-4.1-nano (default)');
       console.log('\nAvailable OpenAI Models:', OPENAI_MODELS.join(', '));
     }
     console.log('\nAccount Type:', config.IS_FREE_ACCOUNT ? 'Free' : 'Paid');

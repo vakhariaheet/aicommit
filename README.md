@@ -7,7 +7,7 @@ AICommit is a powerful CLI tool that uses either Google's Gemini or OpenAI's GPT
 - 🤖 Supports both Google Gemini and OpenAI GPT models
 - 🧠 Multiple model options for each provider
   - Gemini: gemini-2.0-flash, gemini-2.0-flash-vision
-  - OpenAI: gpt-4, gpt-4-turbo-preview, gpt-3.5-turbo, gpt-3.5-turbo-16k
+  - OpenAI: gpt-4, gpt-4-turbo-preview, gpt-4.1-nano, gpt-4.1-nano-16k
 - 📝 Generates conventional commit messages with appropriate types
 - 🎯 Supports commit scopes and breaking changes
 - 🔄 Amend existing commits
@@ -23,13 +23,13 @@ AICommit is a powerful CLI tool that uses either Google's Gemini or OpenAI's GPT
 
 ```bash
 # Using npm
-npm install -g aicommit
+npm install -g @vakhariaheet/aicommit
 
 # Using yarn
-yarn global add aicommit
+yarn global add @vakhariaheet/aicommit
 
 # Using bun
-bun install -g aicommit
+bun install -g @vakhariaheet/aicommit
 ```
 
 ## 🔑 Setup
@@ -50,7 +50,7 @@ aicommit config --model gemini-2.0-flash
 
 # For OpenAI
 aicommit config --key YOUR_OPENAI_API_KEY --provider openai
-aicommit config --model gpt-3.5-turbo
+aicommit config --model gpt-4.1-nano
 ```
 
 ## 📚 Usage
@@ -188,21 +188,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 MIT License - feel free to use this in your projects! 
 
-## Environment Variables
 
-You can also set your API keys using environment variables:
 
-- `GEMINI_API_KEY` - Your Google Gemini API key
-- `OPENAI_API_KEY` - Your OpenAI API key 
-
-## Available Models
-
-### OpenAI Models
-- `gpt-4` - Most capable model, best for complex commit messages
-- `gpt-4-turbo-preview` - Latest GPT-4 model with improved performance
-- `gpt-3.5-turbo` - Fast and cost-effective (default)
-- `gpt-3.5-turbo-16k` - Larger context window for big diffs
-
-### Gemini Models
-- `gemini-2.0-flash` - High-performance model for text generation (default)
-- `gemini-2.0-flash-vision` - Advanced model with vision capabilities 

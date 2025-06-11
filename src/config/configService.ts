@@ -1,54 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import inquirer from 'inquirer';
-import chalk from 'chalk';
+
 import { Config } from '../types';
 import { CONFIG_FILE } from './constants';
+import { AIProvider } from '../services/aiServiceFactory';
 
-export async function setApiKey(key?: string, isFreeAccount?: boolean): Promise<boolean> {
-  try {
-    let finalKey = key;
-    let finalIsFreeAccount = isFreeAccount;
 
-    if (!finalKey || finalIsFreeAccount === undefined) {
-      const responses = await inquirer.prompt([
-        {
-          type: 'input',
-          name: 'apiKey',
-          message: 'Enter your Gemini API key:',
-          validate: (input: string) => input.length > 0 || 'API key cannot be empty',
-          when: !finalKey
-        },
-        {
-          type: 'confirm',
-          name: 'isFreeAccount',
-          message: 'Are you using a free Gemini account?',
-          default: true,
-          when: finalIsFreeAccount === undefined
-        }
-      ]);
-
-      finalKey = finalKey || responses.apiKey;
-      finalIsFreeAccount = finalIsFreeAccount ?? responses.isFreeAccount ?? true;
-    }
-
-    if (!finalKey) {
-      throw new Error('API key is required');
-    }
-
-    const config: Config = {
-      GEMINI_API_KEY: finalKey,
-      IS_FREE_ACCOUNT: finalIsFreeAccount ?? true
-    };
-
-    fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2));
-    console.log(chalk.green('✅ Configuration saved successfully!'));
-    return true;
-  } catch (error) {
-    console.error(chalk.red('Error saving configuration:', (error as Error).message));
-    return false;
-  }
-}
 
 export function getConfig(): Config | null {
   try {
